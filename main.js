@@ -1,14 +1,5 @@
-// import { setupCounter } from './counter.js'
-//
-// document.querySelector('#app').innerHTML = `
-//     <div class="card">
-//       <button id="counter" type="button"></button>
-//     </div>
-// `
-// setupCounter(document.querySelector('#counter'))
-
-import {intToWords} from "./numstring.js";
-import {getCodes} from "./unique-count.js";
+import {intToWords} from "./src/js/numstring.js";
+import {getCodes} from "./src/js/unique-count.js";
 
 function createItem(item) {
     return `<tr className="item">
@@ -31,7 +22,8 @@ let calcFullPrice = (items) => {
     items.forEach()
 }
 let appendItems = async () => {
-    let response = await fetch("data.json")
+    const url = "src/data.json"
+    let response = await fetch(url)
         .then(resolve => {
             return resolve.json()
         })
@@ -56,43 +48,51 @@ let appendItems = async () => {
             const placeForFullPrice = document.getElementById("fullPrice")
             const placeForFullPriceWordsRub = document.getElementById("fullPriceRub")
             const placeForFullPriceWordsKop = document.getElementById("fullPriceKop")
-            placeForFullPrice.innerHTML = fullPrice.toFixed(2)
+            setPriceTexts([placeForFullPrice, placeForFullPriceWordsRub, placeForFullPriceWordsKop], fullPrice)
+
 
             const placeForFullWeight = document.getElementById("fullWeight")
             const placeForFullWeightWords = document.getElementById("fullWeightWords")
-            placeForFullWeight.innerHTML = fullWeight.toFixed(4)
+            setWeightTexts([placeForFullWeight, placeForFullWeightWords], fullWeight)
 
 
-            let fullWeightWordsKg = intToWords(Math.floor((fullWeight.toFixed(4)) * 1000))
-            let fullWeightWordsG = intToWords((fullWeight.toFixed(4) * 1000 - Math.floor((fullWeight.toFixed(4)) * 1000)).toFixed(4) * 1000)
-            if (fullWeightWordsG == 'ноль') {
-                placeForFullWeightWords.innerHTML = fullWeightWordsKg + ' кг '
-            } else {
-                placeForFullWeightWords.innerHTML = fullWeightWordsKg + ' кг ' + fullWeightWordsG + ' г'
-            }
+            setAmountsTexts(document.getElementById("goodsAmount"), fullAmount)
+            setAmountsTexts(document.getElementById("numbersAmount"), numbersAmount)
+            setAmountsTexts(document.getElementById("codesAmount"), codesAmount)
 
-            let fullPriceWordsRub = intToWords(Math.floor(fullPrice))
-            let fullPriceKop = (fullPrice - Math.floor(fullPrice)).toFixed(2) * 100
-            placeForFullPriceWordsRub.innerHTML = fullPriceWordsRub
-            if (fullPriceKop < 10) {
-                fullPriceKop = '0' + fullPriceKop
-                placeForFullPriceWordsKop.innerHTML = fullPriceKop
-            } else {
-                placeForFullPriceWordsKop.innerHTML = fullPriceKop.toFixed(0)
-            }
-
-            const goodsAmount = document.getElementById("goodsAmount")
-            goodsAmount.innerHTML = intToWords(fullAmount)
-
-            const numbersAmountPlace = document.getElementById("numbersAmount")
-            numbersAmountPlace.innerHTML = intToWords(numbersAmount)
-
-            const codesAmountPlace = document.getElementById("codesAmount")
-            codesAmountPlace.innerHTML = intToWords(codesAmount)
         })
         .catch(error => {
             console.log(error)
         })
+}
+
+const setPriceTexts = (places, price) => {
+    places[0].innerHTML = price.toFixed(2)
+    let fullPriceWordsRub = intToWords(Math.floor(price))
+    let fullPriceKop = (price - Math.floor(price)).toFixed(2) * 100
+
+    places[1].innerHTML = fullPriceWordsRub
+    if (fullPriceKop < 10) {
+        fullPriceKop = '0' + fullPriceKop
+        places[2].innerHTML = fullPriceKop
+    } else {
+        places[2].innerHTML = fullPriceKop.toFixed(0)
+    }
+}
+
+const setWeightTexts = (places, weight) => {
+    places[0].innerHTML = weight.toFixed(4)
+
+    let weightWordsKg = intToWords(Math.floor((weight.toFixed(4)) * 1000))
+    let weightWordsG = intToWords((weight.toFixed(4) * 1000 - Math.floor((weight.toFixed(4)) * 1000)).toFixed(4) * 1000)
+    if (weightWordsG == 'ноль') {
+        places[1].innerHTML = weightWordsKg + ' кг '
+    } else {
+        places[1].innerHTML = weightWordsKg + ' кг ' + weightWordsG + ' г'
+    }
+}
+const setAmountsTexts = (place, amount) => {
+    place.innerHTML = intToWords(amount)
 }
 
 appendItems()
