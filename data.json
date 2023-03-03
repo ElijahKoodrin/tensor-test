@@ -1,0 +1,60 @@
+{
+	"order": [
+		{
+			"id": 1,
+			"code": "X34885498436",
+			"nomer": "",
+			"articul": "",
+			"quantity": 50,
+			"price": 1000,
+			"name": "Вино",
+			"name_number": "00001",
+			"unit": "шт",
+			"package": "шт",
+			"amount": 5,
+			"weight": 0.001
+		},
+		{
+			"id": 2,
+			"code": "X98002115599",
+			"nomer": "",
+			"articul": "",
+			"quantity": 10,
+			"price": 500,
+			"name": "Шампанское",
+			"name_number": "00002",
+			"unit": "шт",
+			"package": "шт",
+			"amount": 1,
+			"weight": 0.00125
+		},
+		{
+			"id": 3,
+			"code": "X15362204628",
+			"nomer": "",
+			"articul": "",
+			"quantity": 30,
+			"price": 333.24,
+			"name": "Ром",
+			"name_number": "00003",
+			"unit": "шт",
+			"package": "шт",
+			"amount": 3,
+			"weight": 0.001
+		},
+		{
+			"id": 4,
+			"code": "X15362204628",
+			"nomer": "",
+			"articul": "",
+			"quantity": 100,
+			"price": 99.9,
+			"name": "Бренди",
+			"name_number": "00004",
+			"unit": "шт",
+			"package": "шт",
+			"amount": 10,
+			"weight": 0.001
+		}
+	]
+}

@@ -1,0 +1,171 @@
+@media print {
+	html {
+		zoom: 70%;
+
+	}
+}
+
+* {
+	font-family: "Times New Roman";
+	white-space: nowrap;
+}
+
+body {
+	width: 99%;
+}
+
+table {
+	page-break-inside: avoid;
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 100%;
+
+	tbody {
+		width: 100%;
+
+		.bordered {
+			border: 1pt solid black;
+		}
+
+		.underlined {
+			text-align: center;
+			border: none !important;
+			border-bottom: 1pt solid black !important;
+		}
+
+		.explanation {
+			font-size: 7pt !important;
+			text-align: center;
+			vertical-align: top;
+		}
+
+		.signing {
+			font-size: 11pt !important;
+			vertical-align: baseline !important;
+			font-weight: 900;
+		}
+
+		.right-border {
+			border-right: 1pt solid black;
+		}
+
+		&.standarts {
+			tr {
+				height: 14pt;
+
+				td {
+					font-size: 9pt;
+					font-weight: 400;
+
+					text-wrap: normal;
+					word-wrap: break-word;
+					white-space: normal;
+				}
+			}
+		}
+
+		&.top {
+			tr {
+				height: 17pt;
+
+				td {
+					font-size: 10pt;
+					font-weight: 400;
+					text-align: center;
+					vertical-align: middle;
+					text-wrap: normal;
+					word-wrap: break-word;
+					white-space: normal;
+
+					//overflow: ;
+
+					&:last-of-type {
+						border: 0.5pt solid black;
+						border-right: 0.5pt solid black;
+
+					}
+
+					&.title {
+						text-align: right;
+					}
+
+					&.input {
+						vertical-align: bottom;
+						text-align: left;
+						font-size: 10pt;
+					}
+				}
+
+			}
+		}
+
+		&.main {
+			tr {
+				&.header {
+
+					height: 73pt;
+					vertical-align: middle;
+					font-size: 8pt;
+					text-align: center;
+				}
+
+				&.index {
+					height: 15pt;
+					text-align: center;
+				}
+
+				&.item {
+					height: 12pt;
+					font-size: 12pt;
+
+					td {
+						padding-left: 3pt;
+						padding-right: 3pt;
+					}
+
+					.item {
+						&-right {
+							text-align: right;
+						}
+
+						&-left {
+							text-align: left;
+						}
+
+						&-center {
+							text-align: center;
+						}
+					}
+				}
+
+				td {
+					border: 1pt solid black;
+					font-size: 10pt;
+					font-weight: 400;
+					vertical-align: middle;
+					text-wrap: normal;
+					word-wrap: break-word;
+					white-space: normal;
+				}
+
+			}
+		}
+
+		&.foot {
+			tr {
+				height: 15pt;
+				font-size: 10pt;
+				font-weight: 400;
+				vertical-align: bottom;
+
+
+				td {
+					text-wrap: normal;
+					word-wrap: break-word;
+					white-space: normal;
+				}
+			}
+		}
+	}
+
+}
